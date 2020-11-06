@@ -18,6 +18,7 @@ tox = "*"
 flake8 = "*"
 check-manifest = "*"
 toml = "*"
+twine = "*"
 
 [requires]
 python_version = "3.8"

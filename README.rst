@@ -2,11 +2,6 @@ Overview
 ========
 
 :deployment:
-    .. image:: https://img.shields.io/pypi/pyversions/persontitles.svg
-        :target: https://www.python.org/
-
-    .. image:: https://img.shields.io/pypi/implementation/persontitles.svg
-        :target: https://realpython.com/cpython-source-code-guide/
 
 :test/coverage:
     .. image:: https://app.codacy.com/project/badge/Grade/4bb124e2a8334d608c6a4d1cf1d1e543
@@ -18,9 +13,6 @@ Overview
 :build status:
 
 :docs:
-    .. image:: https://readthedocs.org/projects/persontitles/badge/?version=latest
-        :target: https://persontitles.readthedocs.io/en/latest/?badge=latest
-
     .. image:: https://img.shields.io/github/license/0LL13/persontitles
         :target: https://opensource.org/licenses/MIT
 
@@ -102,8 +94,8 @@ Contribute
 ----------
 
 | **The best way to contribute is to update a wiki page with degrees or titles.**
-If you update the wiki pages and rebuild a new collection, the added degrees will
-be included.
+| If you update the wiki pages and rebuild a new collection, the added degrees will
+| be included.
 
 Support
 -------
