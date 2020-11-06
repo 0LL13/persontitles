@@ -2,6 +2,8 @@ Overview
 ========
 
 :deployment:
+    .. image:: https://img.shields.io/pypi/v/persontitles
+        :alt: PyPI
 
 :test/coverage:
     .. image:: https://app.codacy.com/project/badge/Grade/4bb124e2a8334d608c6a4d1cf1d1e543
@@ -11,6 +13,8 @@ Overview
         :target: https://codecov.io/gh/0LL13/persontitles
 
 :build status:
+    .. image:: https://img.shields.io/travis/0LL13/persontitles
+        :alt: Travis (.org)
 
 :docs:
     .. image:: https://img.shields.io/github/license/0LL13/persontitles
