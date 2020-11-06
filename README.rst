@@ -12,11 +12,14 @@ Overview
     .. image:: https://app.codacy.com/project/badge/Grade/4bb124e2a8334d608c6a4d1cf1d1e543
         :target: https://www.codacy.com/gh/0LL13/persontitles/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=0LL13/persontitles&amp;utm_campaign=Badge_Grade
 
+    .. image:: https://codecov.io/gh/0LL13/persontitles/branch/main/graph/badge.svg?token=G7O54JQHFE
+        :target: https://codecov.io/gh/0LL13/persontitles
+
 :build status:
 
 :docs:
     .. image:: https://readthedocs.org/projects/persontitles/badge/?version=latest
-        :target: https://person.readthedocs.io/en/latest/?badge=latest
+        :target: https://persontitles.readthedocs.io/en/latest/?badge=latest
 
     .. image:: https://img.shields.io/github/license/0LL13/persontitles
         :target: https://opensource.org/licenses/MIT

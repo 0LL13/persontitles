@@ -34,3 +34,4 @@ recursive-include docs *.odt
 recursive-include docs *.txt
 recursive-include persontitles *py
 recursive-include persontitles *.txt
+recursive-include persontitles *.json
