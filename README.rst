@@ -2,12 +2,23 @@ Overview
 ========
 
 :deployment:
+    .. image:: https://img.shields.io/pypi/pyversions/persontitles.svg
+        :target: https://www.python.org/
+
+    .. image:: https://img.shields.io/pypi/implementation/persontitles.svg
+        :target: https://realpython.com/cpython-source-code-guide/
 
 :test/coverage:
 
 :build status:
 
 :docs:
+    .. image:: https://readthedocs.org/projects/persontitles/badge/?version=latest
+        :target: https://person.readthedocs.io/en/latest/?badge=latest
+
+    .. image:: https://img.shields.io/github/license/0LL13/persontitles
+        :target: https://opensource.org/licenses/MIT
+
 
 A dict with three lists containing academic degrees from the US, UK, and Germany.
 A dict with peer titles from various countries.
