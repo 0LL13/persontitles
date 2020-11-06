@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 # academic_degrees.py
 """Collection of academic degrees."""
 import json

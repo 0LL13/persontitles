@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 # test_peertitles.py
 """Tests for peertitles."""
 import os

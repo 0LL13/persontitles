@@ -5,6 +5,9 @@ Overview
     .. image:: https://img.shields.io/pypi/v/persontitles
         :alt: PyPI
 
+    .. image:: https://img.shields.io/pypi/pyversions/persontitles
+        :alt: PyPI - Python Version
+
 :test/coverage:
     .. image:: https://app.codacy.com/project/badge/Grade/4bb124e2a8334d608c6a4d1cf1d1e543
         :target: https://www.codacy.com/gh/0LL13/persontitles/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=0LL13/persontitles&amp;utm_campaign=Badge_Grade

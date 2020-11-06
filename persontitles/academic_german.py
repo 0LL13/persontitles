@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 # academic_german.py
 """Collection of German academic degrees."""
 import unicodedata

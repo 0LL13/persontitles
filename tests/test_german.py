@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 # test_german.py
 """Tests for academic_german module."""
 import os

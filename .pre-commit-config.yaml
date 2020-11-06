@@ -14,6 +14,10 @@ repos:
     -   id: check-yaml
     -   id: debug-statements
     -   id: double-quote-string-fixer
+    -   id: detect-private-key
+      #    -   id: end-of-file-fixer
+    -   id: fix-encoding-pragma
+    -   id: check-merge-conflict
 -   repo: https://gitlab.com/pycqa/flake8
     rev: 3.8.0
     hooks:

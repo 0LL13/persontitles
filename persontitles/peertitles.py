@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 # peer_titles.py
 """Collection of peer titles."""
 import json

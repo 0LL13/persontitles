@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 # test_degrees.py
 """Tests for academic degrees."""
 import os
