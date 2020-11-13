@@ -8,27 +8,38 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def degrees_uk() -> set:
+def degrees_uk() -> list:
     try:
         with open('./persontitles/academic_uk.txt', mode='r', encoding='utf-8') as fin:  # noqa
-            ACADEMIC = fin.read().split('\n')
+            DEGREES = fin.read().split('\n')
     except FileNotFoundError:
-        DEGREES = _degrees()
-        ACADEMIC = []
-        for abbr in DEGREES:
-            abbr = unicodedata.normalize('NFKD', abbr)
-            ACADEMIC.append(abbr)
+        DEGREES = uk_degrees()
         with open('./persontitles/academic_uk.txt', mode='a', encoding='utf-8') as fout:  # noqa
-            fout.write('\n'.join(item for item in set(ACADEMIC)))
-    return set(ACADEMIC)
+            fout.write('\n'.join(item for item in DEGREES))
+    return DEGREES
 
 
-def get_degrees(soup):
-    degrees = []
-    for li in soup.find_all('li'):
-        values = [li.text]
-        degrees.append(values[0])
+def uk_degrees():
+    data = requests.get('https://en.wikipedia.org/wiki/British_degree_abbreviations')  # noqa
+    soup = BeautifulSoup(data.text, 'lxml')
+    lines = get_lines(soup)
+    uk_degrees = []
+    for i, degree in enumerate(lines):
+        if i > 19 and i < 440:
+            uk_degrees.append(degree)
+    abbrevs = strip_degrees(uk_degrees)
+    fnl_degrees = final_degrees(abbrevs)
+    degrees = normalize_degrees(fnl_degrees)
+
     return degrees
+
+
+def get_lines(soup):
+    lines = []
+    for li in soup.find_all('li'):
+        values = [li.get_text(strip=True)]
+        lines.append(values[0])
+    return lines
 
 
 def strip_degrees(degrees) -> list:
@@ -58,21 +69,17 @@ def final_degrees(abbrevs):
             final_degrees.append(ab)
         else:
             final_degrees.append(abbr.strip())
+
     return final_degrees
 
 
-def _degrees():
-    data = requests.get('https://en.wikipedia.org/wiki/British_degree_abbreviations')  # noqa
-    soup = BeautifulSoup(data.text, 'lxml')
-    degrees = get_degrees(soup)
-    uk_degrees = []
-    for i, degree in enumerate(degrees):
-        if i > 19 and i < 440:
-            uk_degrees.append(degree)
-    abbrevs = strip_degrees(uk_degrees)
-    fnl_degrees = final_degrees(abbrevs)
+def normalize_degrees(degrees):
+    DEGREES = []
+    for abbr in set(degrees):
+        abbr = unicodedata.normalize('NFKD', abbr)
+        DEGREES.append(abbr)
 
-    return fnl_degrees
+    return DEGREES
 
 
 if __name__ == '__main__':

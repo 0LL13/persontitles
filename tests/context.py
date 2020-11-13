@@ -13,6 +13,8 @@ sys.path.append(
 
 from persontitles import (  # type: ignore # isort:skip # noqa # pylint: disable=unused-import, wrong-import-position
     academic_german,
+    academic_german_wiki,
+    academic_german_drtitel,
     academic_uk,
     academic_us,
     academic_degrees,

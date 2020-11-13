@@ -15,6 +15,7 @@ sys.path.append(
 )  # isort: skip # noqa # pylint: disable=wrong-import-position
 
 from persontitles.academic_german import degrees_ger  # noqa
+from persontitles.academic_german import german_abbrevs  # noqa
 from persontitles.academic_uk import degrees_uk  # noqa
 from persontitles.academic_us import degrees_us  # noqa
 
@@ -37,7 +38,13 @@ def collect_degrees():
 
     for degree in degrees_ger():
         degrees.append(degree)
-    DEGREES['GER'] = degrees
+    DEGREES['D'] = degrees
+
+    degrees = []
+    degrees_d = degrees_ger()
+    for degree in german_abbrevs(degrees_d):
+        degrees.append(degree)
+    DEGREES['german_abbrevs'] = degrees
 
     degrees = []
     for degree in degrees_uk():
@@ -54,4 +61,7 @@ def collect_degrees():
 
 if __name__ == '__main__':
     DEGREES = collect_degrees()
-    print(DEGREES)
+    for k, v in DEGREES.items():
+        print(k)
+        print(v)
+        print()

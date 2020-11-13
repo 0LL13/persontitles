@@ -1,122 +1,138 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # academic_german.py
-"""Collection of German academic degrees."""
-import unicodedata
+"""Collection of German academic degrees combining wiki and drtitel."""
+import os
+import sys
+import re
 
-import requests
-from bs4 import BeautifulSoup
+PACKAGE_PARENT = '..'
+SCRIPT_DIR = os.path.dirname(
+    os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))),
+)  # isort:skip # noqa # pylint: disable=wrong-import-position
+sys.path.append(
+    os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)),
+)  # isort: skip # noqa # pylint: disable=wrong-import-position
+
+from persontitles.academic_german_wiki import degrees_ger_wiki  # noqa
+from persontitles.academic_german_drtitel import degrees_ger_drtitel  # noqa
 
 
-# https://www.unker.com/de/akademische-titel
-ADD = ['Dr. E. h.', 'Dr. eh.', 'Dr. jur.', 'Dr. iur. et rer. pol.']
-
-
-def degrees_ger() -> set:
+def degrees_ger() -> list:
     try:
         with open('./persontitles/academic_german.txt', mode='r', encoding='utf-8') as fin:  # noqa
-            ACADEMIC = fin.read().split('\n')
+            DEGREES = fin.read().split('\n')
     except FileNotFoundError:
-        degrees = _degrees()
-        ACADEMIC = []
-        for abbr in degrees:
-            ACADEMIC.append(abbr)
+        DEGREES_WIKI = set(degrees_ger_wiki())
+        DEGREES_DRTITEL = set(degrees_ger_drtitel())
+        DEGREES = [dgr for dgr in DEGREES_WIKI | DEGREES_DRTITEL]
+
         with open('./persontitles/academic_german.txt', mode='a', encoding='utf-8') as fout:  # noqa
-            fout.write('\n'.join(item for item in set(ACADEMIC)))
+            fout.write('\n'.join(item for item in DEGREES))
 
-    return set(ACADEMIC)
-
-
-def get_degrees(soup):
-    degrees = []
-    for tr in soup.find_all('tr'):
-        values = [td.text for td in tr.find_all('td')]
-        try:
-            degrees.append(values[0])
-        except IndexError:
-            # print("IndexError:", values)
-            pass
-    return degrees
+    return DEGREES
 
 
-def strip_degrees(degrees) -> list:
-    abbrevs = []
+def no_empty_space_in_degree(degrees):
+    """
+    Because there is no coherent writing of German degrees and some are written
+    with empty spaces and some without, all degrees that potentially could
+    have a space/s or other way round will be replicated with/without empty
+    space/s.
+    To make sure that writing a degree without empty spaces is covered, all
+    degrees get reduced of their whitespace.
+    """
+
+    degrees_wo_empty_space = []
     for degree in degrees:
-        if '(' in degree:
-            bracket_content = degree.split('(')[-1]
-            if 'Master' in degree:
-                degree = bracket_content.split(')')[0]
-                abbrevs.append(degree)
-            elif 'FH' in bracket_content:
-                degree = degree.split(')')[0]
-                degree = degree + ')'
-                abbrevs.append(degree)
-            elif 'Med.' in bracket_content:
-                degree = degree.split(')')[0]
-                degree = degree + ')'
-                abbrevs.append(degree)
-            elif 't.o.' in bracket_content:
-                degree = degree.split(')')[0]
-                degree = degree + ')'
-                abbrevs.append(degree)
-            else:
-                degree = degree.split('(')[0]
-                if '/' in degree:
-                    for ttle in degree.split('/'):
-                        abbrevs.append(ttle)
-                else:
-                    abbrevs.append(degree)
-        elif len(set(degree)) == 1:
-            pass
-        elif 'oder' in degree:
-            for ttle in degree.split('oder'):
-                abbrevs.append(ttle.strip())
-        elif '/' in degree:
-            for ttle in degree.split('/'):
-                if ttle == 'Kunstvermittlung':
-                    abbrevs.append('Dipl. Kunstpädagogik/Kunstvermittlung')
-                else:
-                    abbrevs.append(ttle.strip())
-        elif '[' in degree:
-            abbrevs.append(degree.split('[')[0])
-        else:
-            abbrevs.append(degree)
+        degree = re.sub(r'\. ', '.', degree)
+        degrees_wo_empty_space.append(degree)
 
-    for degree in ADD:
-        abbrevs.append(degree)
+    return degrees_wo_empty_space
 
+
+def add_empty_space(degrees) -> list:
+    """
+    A degree like "Dipl.agr.biol." has no empty spaces between the grade of
+    the degree (Dipl.) and its specification (agr. biol.). To make sure that
+    both ways of writing are covered, the degree will be replicated as "Dipl.
+    agr. biol.".
+    """
+
+    degrees_w_empty_space = []
+    for degree in degrees:
+        degree_w_space = ''
+        dot_counter = 1
+        max = len(degree) - 1
+        for i, ch in enumerate(degree):
+            if ch == '.' and i == max:
+                if degree_w_space != '':
+                    degrees_w_empty_space.append(degree_w_space.strip())
+                else:
+                    degrees_w_empty_space.append(degree.strip())
+            elif ch == '.' and i < max:
+                if degree[i + 1] not in ['-', ')']:
+                    if degree_w_space == '':
+                        degree_w_space = degree[:i + 1] + ' ' + degree[i + 1:]
+                        dot_counter += 1
+                    else:
+                        degree_w_space = degree_w_space[:i+dot_counter] + ' ' + degree_w_space[i+dot_counter:]  # noqa
+                        dot_counter += 1
+            elif i == max:
+                if degree_w_space != '':
+                    degrees_w_empty_space.append(degree_w_space.strip())
+                else:
+                    degrees_w_empty_space.append(degree.strip())
+
+    return degrees_w_empty_space
+
+
+def german_abbrevs(DEGREES) -> list:
+    """
+    Because the aim of this module is to find the compounds of a person's name
+    or degree or even peer title, the fact that German degrees are more often
+    than not written with empty spaces between the degree and its specification
+    makes it necessary to collect both those solitary specs like "rer.",
+    "nat.", "oec.", and "med." (there are more), and also the degrees like
+    "Dr." or "Dipl.".
+    """
+
+    degrees = add_empty_space(DEGREES)
+    abbrevs = []
+
+    for degree in degrees:
+        elements = degree.split(' ')
+        print(elements)
+        for element in elements:
+            if element not in abbrevs:
+                abbrevs.append(element)
+
+    abbrevs = [element for element in abbrevs if element.strip()]
     return abbrevs
 
 
-def final_degrees(abbrevs):
-    final_degrees = []
-    for abbr in abbrevs:
-        # get rid of unicode's \xa0 for the empty spaces
-        # https://stackoverflow.com/a/34669482/6597765
-        abbr = unicodedata.normalize('NFKD', abbr)
-        if len(set(abbr)) == 1:
-            pass
-        elif '[' in abbr:
-            abbr = abbr.split('[')[0]
-            final_degrees.append(abbr.strip())
-        elif '...' in abbr:
-            pass
-        else:
-            final_degrees.append(abbr.strip())
-    return final_degrees
-
-
-def _degrees():
-    data = requests.get('https://de.wikipedia.org/wiki/Liste_akademischer_Grade_(Deutschland)')  # noqa
-    soup = BeautifulSoup(data.text, 'lxml')
-    degrees = get_degrees(soup)
-    abbrevs = strip_degrees(degrees)
-    degrees = final_degrees(abbrevs)
-
-    return degrees
-
-
 if __name__ == '__main__':
-    ACADEMIC = degrees_ger()
-    for i, degree in enumerate(ACADEMIC):
-        print(i, degree)
+    DEGREES_WIKI = set(degrees_ger_wiki())
+    DEGREES_DRTITEL = set(degrees_ger_drtitel())
+    DEGREES = [dgr for dgr in DEGREES_WIKI | DEGREES_DRTITEL]
+#    for i, degree in enumerate(sorted(DEGREES)):
+#        print(i, degree)
+    print()
+    print('Count degrees from wiki:', len(DEGREES_WIKI))
+    print('Count degrees from drtitel:', len(DEGREES_DRTITEL))
+
+    print('Common degrees from both sets:', len(DEGREES_WIKI & DEGREES_DRTITEL))  # noqa
+    print('Degrees only from wiki:', len(DEGREES_WIKI - DEGREES_DRTITEL))
+    print('Degrees only from drtitel:', len(DEGREES_DRTITEL - DEGREES_WIKI))
+
+    print('Sum of degrees of both sets:', len(DEGREES))
+
+    degrees_wo = no_empty_space_in_degree(DEGREES)
+    degrees_w = add_empty_space(degrees_wo)
+
+#    for x, y in zip(degrees_wo, degrees_w):
+#        print(f"{x:>20}\t{y:>50}")
+
+    abbrevs = german_abbrevs(DEGREES)
+    print(abbrevs)
+    print('Number of abbreviations:', len(abbrevs))
