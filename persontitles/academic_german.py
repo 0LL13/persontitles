@@ -102,7 +102,6 @@ def german_abbrevs(DEGREES) -> list:
 
     for degree in degrees:
         elements = degree.split(' ')
-        print(elements)
         for element in elements:
             if element not in abbrevs:
                 abbrevs.append(element)
