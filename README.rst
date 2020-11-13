@@ -49,7 +49,7 @@ Usage with degrees
     >>>False
 
     >>>len(DEGREES["D"])
-    >>>418
+    >>>496
 
     >>>"MOcean" in DEGREES["UK"]
     >>>True
