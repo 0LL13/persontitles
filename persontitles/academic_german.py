@@ -130,9 +130,8 @@ if __name__ == '__main__':
     degrees_wo = no_empty_space_in_degree(DEGREES)
     degrees_w = add_empty_space(degrees_wo)
 
-#    for x, y in zip(degrees_wo, degrees_w):
-#        print(f"{x:>20}\t{y:>50}")
-
     abbrevs = german_abbrevs(DEGREES)
-    print(abbrevs)
     print('Number of abbreviations:', len(abbrevs))
+
+    for degree in sorted(DEGREES):
+        print(degree)

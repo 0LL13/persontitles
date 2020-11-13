@@ -42,13 +42,13 @@ Usage with degrees
     >>>from persontitles import academic_degrees
     >>>DEGREES = academic_degrees.degrees()
 
-    >>>"Dr. iur. et rer. pol." in DEGREES["GER"]
+    >>>"Dr. iur. et rer. pol." in DEGREES["D"]
     >>>True
 
-    >>>"bogus degree" in DEGREES["GER"]
+    >>>"bogus degree" in DEGREES["D"]
     >>>False
 
-    >>>len(DEGREES["GER"])
+    >>>len(DEGREES["D"])
     >>>418
 
     >>>"MOcean" in DEGREES["UK"]
@@ -102,7 +102,7 @@ Contribute
 
 | **The best way to contribute is to update a wiki page with degrees or titles.**
 | If you update the wiki pages and rebuild a new collection, the added degrees will
-| be included.
+| be included (tested by myself).
 
 Support
 -------
@@ -110,6 +110,8 @@ Support
 
 Planned
 -------
+
+I would like to add more degrees in French or Spanish.
 
 
 Warranty
@@ -132,6 +134,10 @@ THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE SOFTWARE BE LIABLE FOR ANY
 DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
+
+In this particular package this means especially that there is no warranty
+concerning the completeness of degrees for a country, the proper spelling of
+the degrees listed, and the correctness of those degrees.
 
 License
 -------
