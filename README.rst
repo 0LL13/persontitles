@@ -24,8 +24,9 @@ Overview
         :target: https://opensource.org/licenses/MIT
 
 
-A dict with three lists containing academic degrees from the US, UK, and Germany.
-A dict with peer titles from various countries.
+Dicts with lists containing academic degrees from the US, UK, and Germany,
+peer titles from various countries (mixed), English and German job titles
+(mixed).
 
 Features
 --------
@@ -34,6 +35,7 @@ Check if a degree is a valid degree of chosen country.
 Check if a degree is written correctly.
 Check the number of US, UK, and German academic degrees.
 Check if a title is a valid peer title of chosen country.
+Check if a title is a job title.
 
 Usage with degrees
 ------------------
@@ -78,6 +80,23 @@ Usage with titles
 
     >>>"Archduke" in TITLES["English"]
     >>>True
+
+
+Usage with job titles
+---------------------
+::
+
+    >>>from persontitles import job_titles
+    >>>JOB_TITLES = job_titles.job_titles
+
+    >>>"CEO" in JOB_TITLES
+    >>>True
+
+    >>>"Facharzt Anästhesiologie" in JOB_TITLES
+    >>>True
+
+    >>>len(JOB_TITLES)
+    >>>1023
 
 
 Credits
