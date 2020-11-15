@@ -111,7 +111,8 @@ Support
 Planned
 -------
 
-I would like to add more degrees in French or Spanish.
+Add degrees in French or Spanish.
+Add job roles, offices, job abbreviations.
 
 
 Warranty

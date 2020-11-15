@@ -1,0 +1,82 @@
+Account Manager - Kundenbetreuer
+Accountant - Buchhalter, Rechnungsprüfer
+Administration - Verwaltung
+Administrativ Manager - Verwaltungsdirektor
+Advertising Director / Manager - Leiter der Werbeabteilung
+Agent -Vertreter
+Area Manager - Bereichsleiter
+Associate Director - Stellevertretender Direktor
+Auditor - Wirtschaftsprüfer, Rechnungsprüfer
+Backoffice - Büro Assistent
+Branch Manager - Filialleiter, Zweigstellenleiter
+Brand Manager - Produktgruppenmanager
+Business Consultant - Unternehmensberater
+Business Sales Manager - Kaufmännischer Direktor
+Business Unit Manger - Geschäftsbereichsleiter
+Call Center Agent - Telefonist
+Chairman - Vorsitzender, Präsident
+Chief Accountant - Leiter der Buchhaltung
+Chief Executive Officer (CEO) - Hauptgeschäftsführer, Vorstandvorsitzender
+Chief Financial Officer (CFO)  -  Leiter der Finanzabteilung
+Consultat -  Berater
+Content Manager - Online-Redakteur
+Costumer Relations Manager - Kundendienstleiter
+Costumer Service Manager - Kundendienstleiter
+Data Processing Manager - Leiter der EDV Abteilung
+Departmental Manger - Abteilungsleiter
+Design Engineer - Entwicklungsingenieur
+District Manager - Gebietsleiter
+Director Purchasing - Einkaufsleiter
+Director of Finance -  Leiter Finanzabteilung
+Director of Marketing - Marketingleiter
+Director of Sales - Verkaufsleiter
+Distribution Manager -  Vertriebsleiter
+Divisional Director / Manager - Geschäftsbereichsleiter
+Editor  - Redakteur
+Employee - Angestellter
+Engineer - Ingenieur
+Engineering Manager - Leiter der technischen Abteilung
+Export Director / Manager - Leiter der Axportabteilung
+Factory Manager - Werksleiter
+Facility Manager - Hausmeister
+Field Sales Manager -  Außendienstleiter
+Financial Manage - Leiter der Finanzabteilung
+Fund Manager - Disponent
+General Executive Manager - Generaldirektor, Geschäftsführer
+Head of… -  Abteilungsleiter
+Head of Sales - Vertriebsleitung
+Head of Department - Bereichsleiter
+Head of Legal Department - Leiter der Rechtsabteilung
+Human Resources Manager - Personalleiter
+Import Director -  Leiter der Importabteilung
+Key Account Manager - Betreuer von Schlüsselkunden
+Logistics Manager - Leiter der Logistikabteilung
+Managing Partner - Geschäftsführender Gesellschafter
+Mangement Consultant - Unternehmensberater
+Marketing Assistent - Assistent der Marketingabteilung
+Marketing Consultant - Vertriebsberater
+Office Manager - Geschäftsstellenleiter / Büroleiter
+Plant Manager -  Werksleiter
+President - Vorstandsvorsitzender
+Product Manager - Produktmanager
+Production Director / Manager - Betriebsleiter, Produsktionsleiter
+Promotion Manager - Werbeleiter
+Project Leader - Projektleiter
+Purchasing Manager - Einkaufsleiter
+Purchasing Officer - Einkäufer
+Research Director / Manager - Leiter der Forschungsabteilung
+Sales Representative - Außendienstmitarbeiter
+Sales Director - Verkaufsleiter, Vertriebsleiter
+Semi Skilled Worker -  Angelernter Arbeiter
+Senior Manager - Leitender Mitarbeiter
+Service Manager - Leiter der Kundendienstabteilung
+Shipping Agent - Spediteur
+Skilled Worker -Facharbeiter
+Systems Manager - Leiter der EDV Abteilung
+Supervisor - Abteilungsleiter
+Team Leader - Gruppenleiter
+Technical Director / Manager - Technischer Leiter
+Trainee - Praktikant
+Treasury Specialist / Treasurer - Finanzdirektor
+Unskilled Worker - Ungelernte Arbeitskraft
+Vice Chairman / President - Stellvertretender Vorsitzender / Direktor

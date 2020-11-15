@@ -21,6 +21,22 @@ def peertitles() -> dict:
     return PEERTITLES
 
 
+def _titles() -> dict:
+    # data = requests.get('https://www.heraldik-wiki.de/wiki/Adelstitel#Adelstitel_in_verschiedenen_Sprachen')  # noqa
+    peer_dict = dict()
+    data = requests.get('https://de.wikipedia.org/wiki/Adelstitel')
+    soup = BeautifulSoup(data.text, 'lxml')
+    tbody = get_table(soup)
+    for language in LANGUAGES:
+        titles = get_titles(tbody, language)
+        stripped_titles = strip_titles(titles)
+        final_titles = finalize_titles(stripped_titles, language)
+        unique_titles = _unique(final_titles)
+        peer_dict[language] = unique_titles
+
+    return peer_dict
+
+
 def get_table(soup):
     for h2 in soup.find_all('h2'):
         if 'Adelstitel in verschiedenen Sprachen' in h2.text:
@@ -86,22 +102,6 @@ LANGUAGES = [
     'Chinese',
     'Amharic',
 ]
-
-
-def _titles() -> dict:
-    # data = requests.get('https://www.heraldik-wiki.de/wiki/Adelstitel#Adelstitel_in_verschiedenen_Sprachen')  # noqa
-    peer_dict = dict()
-    data = requests.get('https://de.wikipedia.org/wiki/Adelstitel')
-    soup = BeautifulSoup(data.text, 'lxml')
-    tbody = get_table(soup)
-    for language in LANGUAGES:
-        titles = get_titles(tbody, language)
-        stripped_titles = strip_titles(titles)
-        final_titles = finalize_titles(stripped_titles, language)
-        unique_titles = _unique(final_titles)
-        peer_dict[language] = unique_titles
-
-    return peer_dict
 
 
 def strip_titles(titles) -> list:
