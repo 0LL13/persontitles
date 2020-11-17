@@ -30,7 +30,7 @@ def job_titles() -> list:
     return JOB_TITLES
 
 
-def job_titles_mix():
+def job_titles_mix() -> list:
     titles_1 = titles_url_1()
     titles_2 = titles_url_2()
     titles_3 = titles_url_3()
@@ -95,8 +95,7 @@ def titles_url_2() -> list:
     url = urls[1]
     soup = get_soup(url)
     rawJ = soup.find('script')
-# how to handle the nested stuff:
-# https://stackoverflow.com/q/32021142/6597765
+# this ignores the json stuff and only makes use of splitting strings
     J = str(rawJ)
     J1 = J.split('var _env=')[-1]
     J2 = J1.split(';')[4]

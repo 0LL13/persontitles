@@ -1,5 +1,7 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# context.py
+# test_gov_jobs.py
+"""Tests for German government jobs."""
 import os
 import sys
 
@@ -11,14 +13,15 @@ sys.path.append(
     os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)),
 )  # isort: skip # noqa # pylint: disable=wrong-import-position
 
-from persontitles import (  # type: ignore # isort:skip # noqa # pylint: disable=unused-import, wrong-import-position
-    academic_german,
-    academic_german_wiki,
-    academic_german_drtitel,
-    academic_uk,
-    academic_us,
-    academic_degrees,
-    peertitles,
-    job_titles,
-    gov_jobs,
-)  # pylint: disable=unused-import  # noqa
+from context import gov_jobs  # noqa
+
+
+def test_no_file():
+    os.remove('./persontitles/gov_jobs.txt')
+    JOB_TITLES = gov_jobs.gov_jobs()
+    assert isinstance(JOB_TITLES, list)
+
+
+def test_titles_is_list():
+    JOB_TITLES = gov_jobs.gov_jobs()
+    assert isinstance(JOB_TITLES, list)

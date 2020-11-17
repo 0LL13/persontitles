@@ -26,7 +26,7 @@ Overview
 
 Dicts with lists containing academic degrees from the US, UK, and Germany,
 peer titles from various countries (mixed), English and German job titles
-(mixed).
+(mixed) and German government jobs (male and female variants).
 
 Features
 --------
@@ -36,6 +36,7 @@ Check if a degree is written correctly.
 Check the number of US, UK, and German academic degrees.
 Check if a title is a valid peer title of chosen country.
 Check if a title is a job title.
+Check if a title is a German government job (includes male and female variants).
 
 Usage with degrees
 ------------------
@@ -98,6 +99,28 @@ Usage with job titles
     >>>len(JOB_TITLES)
     >>>1023
 
+
+Usage with German government jobs
+---------------------------------
+::
+
+    >>>from persontitles import gov_jobs
+    >>>GOV_JOBS = gov_jobs.gov_jobs()
+
+    >>>"Amtsrat" in GOV_JOBS
+    >>>True
+
+    >>>"Amtsrätin" in GOV_JOBS
+    >>>True
+
+    >>>"Zweiter Konrektor" in GOV_JOBS
+    >>>True
+
+    >>>"Zweite Konrektorin" in GOV_JOBS
+    >>>True
+
+    >>>len(GOV_JOBS)
+    >>>402
 
 Credits
 -------
