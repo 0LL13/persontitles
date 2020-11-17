@@ -21,7 +21,7 @@ test_requirements = [
 setup(
     author='Oliver Stapel',
     author_email='hardy.ecc95@gmail.com',
-    python_requires='>=3.8',
+    python_requires='>=3.7',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
@@ -32,7 +32,7 @@ setup(
         'Operating System :: POSIX :: Linux',
         'Topic :: Other/Nonlisted Topic',
     ],
-    description='Collections of academic degrees for the US, the UK, and Germany.',  # noqa
+    description='Collections of academic degrees, job (and peer) titles, and salutations.',  # noqa
     install_requires=requirements,
     license='MIT license',
     long_description=long_description,

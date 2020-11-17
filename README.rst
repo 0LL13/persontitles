@@ -37,6 +37,7 @@ Check the number of US, UK, and German academic degrees.
 Check if a title is a valid peer title of chosen country.
 Check if a title is a job title.
 Check if a title is a German government job (includes male and female variants).
+Check if a word is a valid salutation.
 
 Usage with degrees
 ------------------
@@ -122,6 +123,23 @@ Usage with German government jobs
     >>>len(GOV_JOBS)
     >>>402
 
+
+Usage with salutations
+----------------------
+::
+
+    >>>from persontitles import salutations
+    >>>SALUT = salutations.salutations()
+
+    >>>"Mr." in SALUT
+    >>>True
+
+    >>>print(SALUT)
+    >>>['Herr', 'Hr.', 'Frau', 'Fr.', 'Frl.', 'Mr.', 'Mr', 'Mrs.', 'Mrs',
+        'Ms.', 'Ms', 'Miss', 'Monsieur', 'monsieur', 'Madame', 'madame',
+        'Señor', 'señor', 'Señora', 'señora']
+
+
 Credits
 -------
 
@@ -154,7 +172,7 @@ Planned
 -------
 
 Add degrees in French or Spanish.
-Add job roles, offices, job abbreviations.
+Add job roles, offices, job abbreviations, religious titles.
 
 
 Warranty
