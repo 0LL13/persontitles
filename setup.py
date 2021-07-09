@@ -38,6 +38,7 @@ setup(
     long_description=long_description,
     long_description_content_type='text/x-rst',
     include_package_data=True,
+    package_data={"persontitles": ["*.txt", "*.json"]},
     keywords='person, titles, degrees',
     name='persontitles',
     # packages=find_packages(exclude=('tests',)),  # noqa
