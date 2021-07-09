@@ -3,7 +3,7 @@
 
 """The setup script."""
 
-from setuptools import find_packages, setup  # type: ignore
+from setuptools import setup  # type: ignore
 
 with open('README.rst') as readme_file:
     long_description = readme_file.read()
@@ -40,7 +40,8 @@ setup(
     include_package_data=True,
     keywords='person, titles, degrees',
     name='persontitles',
-    packages=find_packages(exclude=('tests',)),  # noqa
+    # packages=find_packages(exclude=('tests',)),  # noqa
+    packages=['persontitles'],
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/0LL13/persontitles',

@@ -135,9 +135,8 @@ Usage with salutations
     >>>True
 
     >>>print(SALUT)
-    >>>['Herr', 'Hr.', 'Frau', 'Fr.', 'Frl.', 'Mr.', 'Mr', 'Mrs.', 'Mrs',
-        'Ms.', 'Ms', 'Miss', 'Monsieur', 'monsieur', 'Madame', 'madame',
-        'Señor', 'señor', 'Señora', 'señora']
+    >>>['Herr', 'Hr.', 'Frau', 'Fr.', 'Frl.', 'Mr.', 'Mr', 'Mrs.', 'Mrs', 'Ms.', 'Ms', 'Miss', 'Monsieur',
+        'monsieur', 'Madame', 'madame', 'Señor', 'señor', 'Señora', 'señora']
 
 
 Credits
