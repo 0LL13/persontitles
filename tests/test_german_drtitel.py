@@ -17,7 +17,7 @@ from context import academic_german_drtitel  # noqa
 
 
 def test_filenotfound():
-    os.remove('./persontitles/academic_german_drtitel.txt')
+    os.remove('./persontitles/data/academic_german_drtitel.txt')
     ACADEMIC = academic_german_drtitel.degrees_ger_drtitel()
     assert isinstance(ACADEMIC, list)
 

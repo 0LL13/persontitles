@@ -8,7 +8,7 @@ from context import peertitles
 
 
 def test_peertitles_is_dict():
-    os.remove('./persontitles/peertitles.json')
+    os.remove('./persontitles/data/peertitles.json')
     PEERTITLES = peertitles.peertitles()
     assert isinstance(PEERTITLES, dict)
 

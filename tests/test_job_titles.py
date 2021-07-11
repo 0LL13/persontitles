@@ -17,11 +17,16 @@ from context import job_titles  # noqa
 
 
 def test_no_file():
-    os.remove('./persontitles/job_titles.txt')
+    try:
+        os.remove('./persontitles/data/job_titles.txt')
+    except FileNotFoundError:
+        pass
     JOB_TITLES = job_titles.job_titles()
-    assert isinstance(JOB_TITLES, list)
+    assert isinstance(JOB_TITLES, dict)
 
 
-def test_titles_is_list():
+def test_titles_is_dict_of_lists():
     JOB_TITLES = job_titles.job_titles()
-    assert isinstance(JOB_TITLES, list)
+    assert isinstance(JOB_TITLES, dict)
+    assert isinstance(JOB_TITLES["German"], list)
+    assert isinstance(JOB_TITLES["English"], list)

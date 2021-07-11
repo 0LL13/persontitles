@@ -3,19 +3,32 @@
 # peer_titles.py
 """Collection of peer titles."""
 import json
+import os
 import requests
+import sys
 import unicodedata
+
 from bs4 import BeautifulSoup
 from typing import List
+
+# PACKAGE_PARENT = '..'
+# SCRIPT_DIR = os.path.dirname(
+#     os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))),
+# )  # isort:skip # noqa # pylint: disable=wrong-import-position
+# sys.path.append(
+#     os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)),
+# )  # isort: skip # noqa # pylint: disable=wrong-import-position
 
 
 def peertitles() -> dict:
     try:
-        with open('./persontitles/peertitles.json', mode='r', encoding='utf-8') as fin:  # noqa
+        with open('./persontitles/data/peertitles.json', mode='r', encoding='utf-8') as fin:  # noqa
             PEERTITLES = json.load(fin)
+        print("opening at ./data/...")
     except FileNotFoundError:
         PEERTITLES = _titles()
-        with open('./persontitles/peertitles.json', mode='w', encoding='utf-8') as fout:  # noqa
+        print("saving at ./data/...")
+        with open('./persontitles/data/peertitles.json', mode='w', encoding='utf-8') as fout:  # noqa
             json.dump(PEERTITLES, fout)
 
     return PEERTITLES
@@ -275,7 +288,7 @@ def finalize_english_titles(final_titles, peer):
 
 
 if __name__ == '__main__':
-    peers = _titles()
+    peers = peertitles()
     for k, v in peers.items():
         print(k, v)
         print()

@@ -16,11 +16,11 @@ urls = [
 
 def gov_jobs() -> list:
     try:
-        with open('./persontitles/gov_jobs.txt', mode='r', encoding='utf-8') as fin:  # noqa
+        with open('./persontitles/data/gov_jobs.txt', mode='r', encoding='utf-8') as fin:  # noqa
             GOV_JOBS = fin.read().split('\n')
     except FileNotFoundError:
         GOV_JOBS = gov_job_titles()
-        with open('./persontitles/gov_jobs.txt', mode='a', encoding='utf-8') as fout:  # noqa
+        with open('./persontitles/data/gov_jobs.txt', mode='a', encoding='utf-8') as fout:  # noqa
             fout.write('\n'.join(item for item in GOV_JOBS))
 
     return GOV_JOBS
@@ -28,6 +28,8 @@ def gov_jobs() -> list:
 
 def gov_job_titles() -> list:
     titles_1 = titles_url_1()
+    print('titles_1')
+    print(titles_1)
     job_titles = [ttle for ttle in set(titles_1)]  # noqa
     job_titles = change_first_word_to_female(job_titles)
     fem_male_collection = change_2_or_more_words_to_female(job_titles)
@@ -48,6 +50,7 @@ def titles_url_1() -> list:
     lines = []
     for p in soup.find_all('p'):
         lines.append(p.get_text(strip=True))
+    print(lines)
 
     lines = lines[12:47]
     title_collection = []

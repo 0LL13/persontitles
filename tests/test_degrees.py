@@ -17,7 +17,10 @@ from context import academic_degrees  # noqa
 
 
 def test_no_file():
-    os.remove('./persontitles/degrees.json')
+    try:
+        os.remove('./persontitles/data/degrees.json')
+    except FileNotFoundError:
+        pass
     ACADEMIC = academic_degrees.degrees_ger()
     assert isinstance(ACADEMIC, list)
 

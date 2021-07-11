@@ -20,14 +20,14 @@ from persontitles.academic_german_drtitel import degrees_ger_drtitel  # noqa
 
 def degrees_ger() -> list:
     try:
-        with open('./persontitles/academic_german.txt', mode='r', encoding='utf-8') as fin:  # noqa
+        with open('./persontitles/data/academic_german.txt', mode='r', encoding='utf-8') as fin:  # noqa
             DEGREES = fin.read().split('\n')
     except FileNotFoundError:
         DEGREES_WIKI = set(degrees_ger_wiki())
         DEGREES_DRTITEL = set(degrees_ger_drtitel())
         DEGREES = [dgr for dgr in DEGREES_WIKI | DEGREES_DRTITEL]
 
-        with open('./persontitles/academic_german.txt', mode='a', encoding='utf-8') as fout:  # noqa
+        with open('./persontitles/data/academic_german.txt', mode='a', encoding='utf-8') as fout:  # noqa
             fout.write('\n'.join(item for item in DEGREES))
 
     return DEGREES

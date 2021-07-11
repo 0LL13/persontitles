@@ -8,7 +8,7 @@ from context import academic_uk
 
 
 def test_filenotfound():
-    os.remove('./persontitles/academic_uk.txt')
+    os.remove('./persontitles/data/academic_uk.txt')
     ACADEMIC = academic_uk.degrees_uk()
     assert isinstance(ACADEMIC, list)
 
