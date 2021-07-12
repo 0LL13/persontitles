@@ -4,6 +4,7 @@
 """Collection of academic degrees."""
 import json
 import os
+import pkgutil
 import sys
 
 PACKAGE_PARENT = '..'
@@ -25,11 +26,35 @@ def degrees() -> dict:
         with open('./persontitles/data/degrees.json', mode='r', encoding='utf-8') as fin:  # noqa
             DEGREES = json.load(fin)
     except FileNotFoundError:
-        DEGREES = collect_degrees()
-        with open('./persontitles/data/degrees.json', mode='w', encoding='utf-8') as fout:  # noqa
-            json.dump(DEGREES, fout)
+        try:
+            DEGREES = collect_degrees()
+            with open('./persontitles/data/degrees.json', mode='w', encoding='utf-8') as fout:  # noqa
+                json.dump(DEGREES, fout)
+        except FileNotFoundError:
+            DEGREES = use_path_wo_pkg_name()
 
     return DEGREES
+
+
+def use_path_wo_pkg_name():
+    try:
+        with open('./data/degrees.json', mode='r', encoding='utf-8') as fin:  # noqa
+            DEGREES = json.load(fin)
+    except FileNotFoundError:
+        try:
+            DEGREES = collect_degrees()
+            with open('./data/degrees.json', mode='w', encoding='utf-8') as fout:  # noqa
+                json.dump(DEGREES, fout)
+        except FileNotFoundError:
+            with open(use_pkgutils(), mode='r', encoding='utf-8') as fin:  # noqa
+                DEGREES = json.load(fin)
+
+    return DEGREES
+
+
+def use_pkgutils():
+    data = pkgutil.get_data(__name__, "data/degrees.json")
+    return data
 
 
 def collect_degrees():
