@@ -41,7 +41,7 @@ setup(
     package_data={"persontitles": ["*.txt", "*.json"]},
     # packages=['persontitles'],
     packages=find_packages(
-        where='persontitles',
+        where='',
         include=['*.py'],
         exclude=('tests',)
     ),  # noqa
