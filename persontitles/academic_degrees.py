@@ -4,12 +4,13 @@
 """Collection of academic degrees."""
 import json
 import os
-import pkgutil
+# import pkgutil
 import sys
 
 PACKAGE_PARENT = '..'
 SCRIPT_DIR = os.path.dirname(
-    os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))),
+    os.path.realpath(os.path.join(os.getcwd(),
+    os.path.expanduser(__file__))),
 )  # isort:skip # noqa # pylint: disable=wrong-import-position
 sys.path.append(
     os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)),
@@ -41,20 +42,11 @@ def use_path_wo_pkg_name():
         with open('./data/degrees.json', mode='r', encoding='utf-8') as fin:  # noqa
             DEGREES = json.load(fin)
     except FileNotFoundError:
-        try:
-            DEGREES = collect_degrees()
-            with open('./data/degrees.json', mode='w', encoding='utf-8') as fout:  # noqa
-                json.dump(DEGREES, fout)
-        except FileNotFoundError:
-            with use_pkgutils() as fin:  # noqa
-                DEGREES = json.load(fin)
+        DEGREES = collect_degrees()
+        with open('./data/degrees.json', mode='w', encoding='utf-8') as fout:  # noqa
+            json.dump(DEGREES, fout)
 
     return DEGREES
-
-
-def use_pkgutils():
-    data = pkgutil.get_data(__name__, "data/degrees.json")
-    return data
 
 
 def collect_degrees():
