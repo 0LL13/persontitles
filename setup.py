@@ -40,7 +40,11 @@ setup(
     include_package_data=True,
     package_data={"persontitles": ["*.txt", "*.json"]},
     # packages=['persontitles'],
-    packages=find_packages(exclude=('tests',)),  # noqa
+    packages=find_packages(
+        where='persontitles',
+        include=['*.py'],
+        exclude=('tests',)
+    ),  # noqa
     keywords='person, titles, degrees',
     name='persontitles',
     test_suite='tests',
