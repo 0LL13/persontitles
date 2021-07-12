@@ -46,7 +46,7 @@ def use_path_wo_pkg_name():
             with open('./data/degrees.json', mode='w', encoding='utf-8') as fout:  # noqa
                 json.dump(DEGREES, fout)
         except FileNotFoundError:
-            with open(use_pkgutils(), mode='r', encoding='utf-8') as fin:  # noqa
+            with use_pkgutils() as fin:  # noqa
                 DEGREES = json.load(fin)
 
     return DEGREES
