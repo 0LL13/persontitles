@@ -11,7 +11,7 @@ sys.path.append(
     os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)),
 )  # isort: skip # noqa # pylint: disable=wrong-import-position
 
-from persontitles import (  # type: ignore # isort:skip # noqa # pylint: disable=unused-import, wrong-import-position
+from persontitles.src import (  # type: ignore # isort:skip # noqa # pylint: disable=unused-import, wrong-import-position
     academic_german,
     academic_german_wiki,
     academic_german_drtitel,

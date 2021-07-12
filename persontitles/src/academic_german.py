@@ -15,8 +15,8 @@ sys.path.append(
     os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)),
 )  # isort: skip # noqa # pylint: disable=wrong-import-position
 
-from persontitles.academic_german_wiki import degrees_ger_wiki  # noqa
-from persontitles.academic_german_drtitel import degrees_ger_drtitel  # noqa
+from src.academic_german_wiki import degrees_ger_wiki  # noqa
+from src.academic_german_drtitel import degrees_ger_drtitel  # noqa
 
 
 def degrees_ger() -> list:
