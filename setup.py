@@ -3,7 +3,7 @@
 
 """The setup script."""
 
-from setuptools import setup  # type: ignore
+from setuptools import find_packages, setup  # type: ignore
 
 with open('README.rst') as readme_file:
     long_description = readme_file.read()
@@ -46,7 +46,7 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/0LL13/persontitles',
-    version='0.2.1',
+    version='0.2.2',
     zip_safe=False,
     extras_require={
         'dev': ['check-manifest'],
