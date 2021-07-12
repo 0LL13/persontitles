@@ -23,27 +23,13 @@ from persontitles.academic_us import degrees_us  # noqa
 
 
 def degrees() -> dict:
+    print(os.getcwd())
     try:
         with open('./persontitles/data/degrees.json', mode='r', encoding='utf-8') as fin:  # noqa
             DEGREES = json.load(fin)
     except FileNotFoundError:
-        try:
-            DEGREES = collect_degrees()
-            with open('./persontitles/data/degrees.json', mode='w', encoding='utf-8') as fout:  # noqa
-                json.dump(DEGREES, fout)
-        except FileNotFoundError:
-            DEGREES = use_path_wo_pkg_name()
-
-    return DEGREES
-
-
-def use_path_wo_pkg_name():
-    try:
-        with open('./data/degrees.json', mode='r', encoding='utf-8') as fin:  # noqa
-            DEGREES = json.load(fin)
-    except FileNotFoundError:
         DEGREES = collect_degrees()
-        with open('./data/degrees.json', mode='w', encoding='utf-8') as fout:  # noqa
+        with open('./persontitles/data/degrees.json', mode='w', encoding='utf-8') as fout:  # noqa
             json.dump(DEGREES, fout)
 
     return DEGREES
@@ -82,3 +68,5 @@ if __name__ == '__main__':
         print(k)
         print(v)
         print()
+
+    print(os.getcwd())

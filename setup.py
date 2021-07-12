@@ -39,14 +39,14 @@ setup(
     long_description_content_type='text/x-rst',
     include_package_data=True,
     package_data={"persontitles": ["*.txt", "*.json"]},
+    # packages=['persontitles'],
+    packages=find_packages(exclude=('tests',)),  # noqa
     keywords='person, titles, degrees',
     name='persontitles',
-    # packages=find_packages(exclude=('tests',)),  # noqa
-    packages=['persontitles'],
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/0LL13/persontitles',
-    version='0.2.0',
+    version='0.2.1',
     zip_safe=False,
     extras_require={
         'dev': ['check-manifest'],
