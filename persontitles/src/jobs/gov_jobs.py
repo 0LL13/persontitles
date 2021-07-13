@@ -10,7 +10,9 @@ from bs4 import BeautifulSoup
 
 
 urls = [
-    'http://www.besoldungstabelle.de/besoldungsgruppen_amtsbezeichnungen_besoldungstabelle'  # noqa
+    # this url was locked away from public:
+    # 'http://www.besoldungstabelle.de/besoldungsgruppen_amtsbezeichnungen_besoldungstabelle' 
+    'https://www.future-beamtenkredit.de/beamtenberufe/',
 ]
 
 

@@ -3,7 +3,7 @@
 
 """The setup script."""
 
-# from setuptools import find_packages  # type: ignore
+from setuptools import find_packages  # type: ignore
 from setuptools import setup  # type: ignore
 
 
@@ -39,20 +39,21 @@ setup(
     license='MIT license',
     long_description=long_description,
     long_description_content_type='text/x-rst',
-#     include_package_data=True,
-#     package_data={"persontitles": ["*.txt", "*.json"]},
-    packages=['persontitles'],
-#     packages=find_packages(
-#         where='src',
-#         include=['*.py'],
-#         exclude=('tests',)
-#     ),  # noqa
+    include_package_data=True,
+    package_data={"persontitles": ["*.txt", "*.json"]},
+    # packages=['persontitles'],
+    packages=find_packages(
+        where='src',
+        include=['*.py'],
+        exclude=('tests',)
+    ),  # noqa
+    package_dir={"": "src"},
     keywords='person, titles, degrees',
     name='persontitles',
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/0LL13/persontitles',
-    version='0.2.6',
+    version='0.2.7',
     zip_safe=False,
     extras_require={
         'dev': ['check-manifest'],
