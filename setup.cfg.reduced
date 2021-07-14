@@ -1,6 +1,6 @@
 [metadata]
 name = persontitles
-version = 0.2.7
+version = attr: 0.2.7
 author = Oliver Stapel
 author_email = hardy.ecc95@gmail.com
 url = https://github.com/0LL13/persontitles
@@ -15,24 +15,14 @@ Intended Audience :: Developers
 License :: OSI Approved :: MIT License
 Natural Language :: English
 Programming Language :: Python :: 3.8
-; Programming Language :: Python :: Implementation :: CPython
 Operating System :: POSIX :: Linux
 Topic :: Other/Nonlisted Topic
-; project_urls =
-;     Bug Tracker = https://github.com/0LL13/persontitles/issues
-;     Source = https://github.com/0LL13/persontitles
  
 [options]
 zip_safe = False
 include_package_data = True
 python_requires = >= 3.8
-packages_dir=
-    =src
 packages = find:
-;     degrees
-;     jobs
-;     titles
-;     salutations
 scripts =
     src/degrees/academic_austria.py
     src/degrees/academic_degrees.py
@@ -45,29 +35,6 @@ scripts =
     src/titles/peertitles.py
     src/titles/rel_titles.py
     src/salutations/salutations.py
-; install_requires =
-;     beautifulsoup4
-;     lxml
-;     requests
-; test_suite = tests
-; 
+ 
 [options.package_data]
 * = *.txt, *.json
-; 
-; [bdist_wheel]
-; universal = true
-; 
-; [sdist]
-; formats = zip, gztar
-
-[options.packages.find]
-where=src
-; exclude = 
-;     tests/*
-; 
-; [options.data_files]
-; data = data/*
-; 
-; [options.extras_require]
-; dev: check-manifest
-; test: pytest-cov

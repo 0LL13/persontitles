@@ -11,7 +11,7 @@ sys.path.append(
     os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)),
 )  # isort: skip # noqa # pylint: disable=wrong-import-position
 
-from persontitles.src.degrees import (  # type: ignore # isort:skip # noqa # pylint: disable=unused-import, wrong-import-position
+from persontitles.src.persontitles.degrees import (  # type: ignore # isort:skip # noqa # pylint: disable=unused-import, wrong-import-position
     academic_german,
     academic_german_wiki,
     academic_german_drtitel,
@@ -20,11 +20,11 @@ from persontitles.src.degrees import (  # type: ignore # isort:skip # noqa # pyl
     academic_degrees,
 )  # pylint: disable=unused-import  # noqa
 
-from persontitles.src.titles import (  # type: ignore # isort:skip # noqa # pylint: disable=unused-import, wrong-import-position
+from persontitles.src.persontitles.titles import (  # type: ignore # isort:skip # noqa # pylint: disable=unused-import, wrong-import-position
     peertitles,
 )  # pylint: disable=unused-import  # noqa
 
-from persontitles.src.jobs import (  # type: ignore # isort:skip # noqa # pylint: disable=unused-import, wrong-import-position
+from persontitles.src.persontitles.jobs import (  # type: ignore # isort:skip # noqa # pylint: disable=unused-import, wrong-import-position
     job_titles,
     gov_jobs,
 )  # pylint: disable=unused-import  # noqa
