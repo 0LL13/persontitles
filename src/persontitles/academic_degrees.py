@@ -16,10 +16,10 @@ sys.path.append(
     os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)),
 )  # isort: skip # noqa # pylint: disable=wrong-import-position
 
-from degrees.academic_german import degrees_ger  # noqa
-from degrees.academic_german import german_abbrevs  # noqa
-from degrees.academic_uk import degrees_uk  # noqa
-from degrees.academic_us import degrees_us  # noqa
+from persontitles.academic_german import degrees_ger  # noqa
+from persontitles.academic_german import german_abbrevs  # noqa
+from persontitles.academic_uk import degrees_uk  # noqa
+from persontitles.academic_us import degrees_us  # noqa
 
 
 def degrees() -> dict:
