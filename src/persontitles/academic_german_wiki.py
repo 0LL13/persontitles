@@ -11,11 +11,11 @@ from bs4 import BeautifulSoup
 
 def degrees_ger_wiki() -> list:
     try:
-        with open('./data/academic_german_wiki.txt', mode='r', encoding='utf-8') as fin:  # noqa
+        with open('./src/persontitles/data/academic_german_wiki.txt', mode='r', encoding='utf-8') as fin:  # noqa
             DEGREES = fin.read().split('\n')
     except FileNotFoundError:
         DEGREES = _degrees()
-        with open('./data/academic_german_wiki.txt', mode='a', encoding='utf-8') as fout:  # noqa
+        with open('./src/persontitles/data/academic_german_wiki.txt', mode='a', encoding='utf-8') as fout:  # noqa
             fout.write('\n'.join(item for item in DEGREES))
 
     return DEGREES

@@ -22,13 +22,11 @@ sys.path.append(
 
 def peertitles() -> dict:
     try:
-        with open('./data/peertitles.json', mode='r', encoding='utf-8') as fin:  # noqa
+        with open('./src/persontitles/data/peertitles.json', mode='r', encoding='utf-8') as fin:  # noqa
             PEERTITLES = json.load(fin)
-        print("opening at ./data/...")
     except FileNotFoundError:
         PEERTITLES = _titles()
-        print("saving at ./data/...")
-        with open('./data/peertitles.json', mode='w', encoding='utf-8') as fout:  # noqa
+        with open('./src/persontitles/data/peertitles.json', mode='w', encoding='utf-8') as fout:  # noqa
             json.dump(PEERTITLES, fout)
 
     return PEERTITLES

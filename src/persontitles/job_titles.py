@@ -20,17 +20,17 @@ urls = [
 def job_titles() -> dict:
     JOB_TITLES = {}
     try:
-        with open('./data/german_jobtitles.txt', mode='r', encoding='utf-8') as fin:  # noqa
+        with open('./src/persontitles/data/german_jobtitles.txt', mode='r', encoding='utf-8') as fin:  # noqa
             german_jobtitles = fin.read().split('\n')
             JOB_TITLES["German"] = german_jobtitles
-        with open('./data/english_jobtitles.txt', mode='r', encoding='utf-8') as fin:  # noqa
+        with open('./src/persontitles/data/english_jobtitles.txt', mode='r', encoding='utf-8') as fin:  # noqa
             english_jobtitles = fin.read().split('\n')
             JOB_TITLES["English"] = english_jobtitles
     except FileNotFoundError:
         german_jobtitles, english_jobtitles = job_titles_mix()
-        with open('./data/german_jobtitles.txt', mode='a', encoding='utf-8') as fout:  # noqa
+        with open('./src/persontitles/data/german_jobtitles.txt', mode='a', encoding='utf-8') as fout:  # noqa
             fout.write('\n'.join(item for item in german_jobtitles))
-        with open('./data/english_jobtitles.txt', mode='a', encoding='utf-8') as fout:  # noqa
+        with open('./src/persontitles/data/english_jobtitles.txt', mode='a', encoding='utf-8') as fout:  # noqa
             fout.write('\n'.join(item for item in english_jobtitles))
 
     return JOB_TITLES

@@ -18,7 +18,7 @@ from context import academic_degrees  # noqa
 
 def test_no_file():
     try:
-        os.remove('./persontitles/data/degrees.json')
+        os.remove('./src/persontitles/data/degrees.json')
     except FileNotFoundError:
         pass
     ACADEMIC = academic_degrees.degrees_ger()

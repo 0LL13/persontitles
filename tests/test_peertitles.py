@@ -9,7 +9,7 @@ from context import peertitles
 
 def test_peertitles_is_dict():
     try:
-        os.remove('./data/peertitles.json')
+        os.remove('./src/persontitles/data/peertitles.json')
     except FileNotFoundError:
         pass
     PEERTITLES = peertitles.peertitles()
