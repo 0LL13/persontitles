@@ -6,16 +6,13 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+setuptools = "*"
 requests = "*"
 beautifulsoup4 = "*"
-pytest = "*"
-pre-commit = "*"
-pre-commit-hooks = "*"
-pytest-cov = "*"
-tox = "*"
-flake8 = "*"
-check-manifest = "*"
 lxml = "*"
+pytest = "*"
+coverage = "*"
+pytest-cov = "*"
 
 [requires]
 python_version = "3.8"
