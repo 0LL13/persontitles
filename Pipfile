@@ -8,17 +8,14 @@ verify_ssl = true
 [packages]
 requests = "*"
 beautifulsoup4 = "*"
-lxml = "*"
 pytest = "*"
 pre-commit = "*"
 pre-commit-hooks = "*"
-mypy = "*"
 pytest-cov = "*"
 tox = "*"
 flake8 = "*"
 check-manifest = "*"
-toml = "*"
-twine = "*"
+lxml = "*"
 
 [requires]
 python_version = "3.8"
