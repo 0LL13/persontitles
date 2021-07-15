@@ -25,11 +25,11 @@ from degrees.academic_us import degrees_us  # noqa
 def degrees() -> dict:
     print(os.getcwd())
     try:
-        with open('./persontitles/data/degrees.json', mode='r', encoding='utf-8') as fin:  # noqa
+        with open('./data/degrees.json', mode='r', encoding='utf-8') as fin:  # noqa
             DEGREES = json.load(fin)
     except FileNotFoundError:
         DEGREES = collect_degrees()
-        with open('./persontitles/data/degrees.json', mode='w', encoding='utf-8') as fout:  # noqa
+        with open('./data/degrees.json', mode='w', encoding='utf-8') as fout:  # noqa
             json.dump(DEGREES, fout)
 
     return DEGREES

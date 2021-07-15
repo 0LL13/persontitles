@@ -11,11 +11,11 @@ from bs4 import BeautifulSoup
 
 def degrees_ger_drtitel() -> list:
     try:
-        with open('./persontitles/data/academic_german_drtitel.txt', mode='r', encoding='utf-8') as fin:  # noqa
+        with open('./data/academic_german_drtitel.txt', mode='r', encoding='utf-8') as fin:  # noqa
             DEGREES_DRTITEL = fin.read().split('\n')
     except FileNotFoundError:
         DEGREES_DRTITEL = dr_degrees()
-        with open('./persontitles/data/academic_german_drtitel.txt', mode='a', encoding='utf-8') as fout:  # noqa
+        with open('./data/academic_german_drtitel.txt', mode='a', encoding='utf-8') as fout:  # noqa
             fout.write('\n'.join(item for item in DEGREES_DRTITEL))
 
     return DEGREES_DRTITEL

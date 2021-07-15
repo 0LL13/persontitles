@@ -11,24 +11,24 @@ import unicodedata
 from bs4 import BeautifulSoup
 from typing import List
 
-# PACKAGE_PARENT = '..'
-# SCRIPT_DIR = os.path.dirname(
-#     os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))),
-# )  # isort:skip # noqa # pylint: disable=wrong-import-position
-# sys.path.append(
-#     os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)),
-# )  # isort: skip # noqa # pylint: disable=wrong-import-position
+PACKAGE_PARENT = '..'
+SCRIPT_DIR = os.path.dirname(
+    os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))),
+)  # isort:skip # noqa # pylint: disable=wrong-import-position
+sys.path.append(
+    os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)),
+)  # isort: skip # noqa # pylint: disable=wrong-import-position
 
 
 def peertitles() -> dict:
     try:
-        with open('./persontitles/data/peertitles.json', mode='r', encoding='utf-8') as fin:  # noqa
+        with open('./data/peertitles.json', mode='r', encoding='utf-8') as fin:  # noqa
             PEERTITLES = json.load(fin)
         print("opening at ./data/...")
     except FileNotFoundError:
         PEERTITLES = _titles()
         print("saving at ./data/...")
-        with open('./persontitles/data/peertitles.json', mode='w', encoding='utf-8') as fout:  # noqa
+        with open('./data/peertitles.json', mode='w', encoding='utf-8') as fout:  # noqa
             json.dump(PEERTITLES, fout)
 
     return PEERTITLES

@@ -8,7 +8,10 @@ from context import peertitles
 
 
 def test_peertitles_is_dict():
-    os.remove('./persontitles/data/peertitles.json')
+    try:
+        os.remove('./data/peertitles.json')
+    except FileNotFoundError:
+        pass
     PEERTITLES = peertitles.peertitles()
     assert isinstance(PEERTITLES, dict)
 

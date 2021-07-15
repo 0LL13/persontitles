@@ -1,9 +1,9 @@
 [run]
-source = persontitles
+source = ./src
 omit = tests/*
 
 [paths]
-source = persontitles/
+source = ./src
 
 [report]
 omit =

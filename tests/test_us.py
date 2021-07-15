@@ -8,7 +8,10 @@ from context import academic_us
 
 
 def test_filenotfound():
-    os.remove('./persontitles/data/academic_us.txt')
+    try:
+        os.remove('./persontitles/data/academic_us.txt')
+    except FileNotFoundError:
+        pass
     ACADEMIC = academic_us.degrees_us()
     assert isinstance(ACADEMIC, set)
 

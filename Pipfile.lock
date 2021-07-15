@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "3e65b9cfb97a518bdd72a9f0260865ffbc274b711f06714fa7e1936ac0cdad3f"
+            "sha256": "364d18bb98640574da72dbc76a8a4864627df1dbec71d6d4fa41e87cd4732ea5"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -31,6 +31,14 @@
             ],
             "index": "pypi",
             "version": "==4.9.3"
+        },
+        "build": {
+            "hashes": [
+                "sha256:0281eeec2697ee43114eb4fe3ba6e54c111ee2c4ef287b5cd24f82cb24cc1bdb",
+                "sha256:16897cac845b50cca04f3c92cf8d3e9e0868b21b29b96b577333c14473baa916"
+            ],
+            "index": "pypi",
+            "version": "==0.5.1"
         },
         "certifi": {
             "hashes": [
@@ -178,6 +186,13 @@
                 "sha256:c86254f9220d55e31cc94d69bade760f0847da8000def4dfe1c6b872fd14ff14"
             ],
             "version": "==21.0"
+        },
+        "pep517": {
+            "hashes": [
+                "sha256:ac59f3f6b9726a49e15a649474539442cf76e0697e39df4869d25e68e880931b",
+                "sha256:eba39d201ef937584ad3343df3581069085bacc95454c80188291d5b3ac7a249"
+            ],
+            "version": "==0.10.0"
         },
         "pluggy": {
             "hashes": [
