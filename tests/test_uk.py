@@ -9,7 +9,7 @@ from context import academic_uk
 
 def test_filenotfound():
     try:
-        os.remove('./data/academic_uk.txt')
+        os.remove('./src/persontitles/data/academic_uk.txt')
     except FileNotFoundError:
         pass
     ACADEMIC = academic_uk.degrees_uk()

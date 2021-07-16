@@ -17,7 +17,7 @@ from context import academic_german_wiki  # noqa
 
 
 def test_filenotfound():
-    os.remove('./src/persontitles/academic_german_wiki.txt')
+    os.remove('./src/persontitles/data/academic_german_wiki.txt')
     ACADEMIC = academic_german_wiki.degrees_ger_wiki()
     assert isinstance(ACADEMIC, list)
 

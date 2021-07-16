@@ -18,13 +18,7 @@ from src.persontitles import (  # type: ignore # isort:skip # noqa # pylint: dis
     academic_uk,
     academic_us,
     academic_degrees,
-)  # pylint: disable=unused-import  # noqa
-
-from src.persontitles import (  # type: ignore # isort:skip # noqa # pylint: disable=unused-import, wrong-import-position
     peertitles,
-)  # pylint: disable=unused-import  # noqa
-
-from src.persontitles import (  # type: ignore # isort:skip # noqa # pylint: disable=unused-import, wrong-import-position
     job_titles,
     gov_jobs,
 )  # pylint: disable=unused-import  # noqa

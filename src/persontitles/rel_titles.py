@@ -10,11 +10,11 @@ from bs4 import BeautifulSoup
 
 def rel_titles() -> list:
     try:
-        with open('./persontitles/religious_titles.txt', mode='r', encoding='utf-8') as fin:  # noqa
+        with open('./src/persontitles/data/religious_titles.txt', mode='r', encoding='utf-8') as fin:  # noqa
             REL_TITLES = fin.read().split('\n')
     except FileNotFoundError:
         REL_TITLES = religious_titles()
-        with open('./persontitles/religious_titles.txt', mode='a', encoding='utf-8') as fout:  # noqa
+        with open('./src/persontitles/data/religious_titles.txt', mode='a', encoding='utf-8') as fout:  # noqa
             fout.write('\n'.join(item for item in REL_TITLES))
 
     return REL_TITLES

@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 def degrees_us():
 
     try:
-        with open('./src/persontitles/academic_us.txt', mode='r', encoding='utf-8') as fin:  # noqa
+        with open('./src/persontitles/data/academic_us.txt', mode='r', encoding='utf-8') as fin:  # noqa
             ACADEMIC = fin.read().split('\n')
     except FileNotFoundError:
         ACADEMIC = []
@@ -27,7 +27,7 @@ def degrees_us():
             abbr = unicodedata.normalize('NFKD', abbr)
             ACADEMIC.append(abbr)
 
-        with open('./src/persontitles/academic_us.txt', mode='a', encoding='utf-8') as fout:  # noqa
+        with open('./src/persontitles/data/academic_us.txt', mode='a', encoding='utf-8') as fout:  # noqa
             fout.write('\n'.join(item for item in set(ACADEMIC)))
 
     return set(ACADEMIC)
@@ -38,13 +38,13 @@ def academic_degrees_1() -> list:
     # https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwih6eSh_uHsAhXRzqQKHXOuChAQFjAAegQIBBAC&url=https%3A%2F%2Fwww2.ed.gov%2Fabout%2Foffices%2Flist%2Fous%2Finternational%2Fusnei%2Fus%2Fmaster.doc&usg=AOvVaw3dwR4LfY5S4eN2jcGrkCA-
     # https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwih6eSh_uHsAhXRzqQKHXOuChAQFjABegQIBhAC&url=https%3A%2F%2Fwww2.ed.gov%2Fabout%2Foffices%2Flist%2Fous%2Finternational%2Fusnei%2Fus%2Fbachelor.doc&usg=AOvVaw22CyjpUN5Z639pCUEqPpfu
     # https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwiTiqrK_-HsAhUG_KQKHRW_AL0QFjACegQIBBAC&url=https%3A%2F%2Fwww2.ed.gov%2Fabout%2Foffices%2Flist%2Fous%2Finternational%2Fusnei%2Fus%2Fdoctorate.doc&usg=AOvVaw2PGDESFOCKJpbUol7vRaFq
-    with open('./src/persontitles/academic_us1.txt', mode='r', encoding='utf-8') as fin:  # noqa
+    with open('./src/persontitles/data/academic_us1.txt', mode='r', encoding='utf-8') as fin:  # noqa
         ACADEMIC_1 = fin.read().split('\n')
     return ACADEMIC_1
 
 
 def academic_degrees_2() -> list:
-    with open('./src/persontitles/academic_us2.txt', mode='r', encoding='utf-8') as fin:  # noqa
+    with open('./src/persontitles/data/academic_us2.txt', mode='r', encoding='utf-8') as fin:  # noqa
         ACADEMIC_2 = fin.read().split('\n')
     return ACADEMIC_2
 
@@ -140,7 +140,7 @@ def _degrees():
 
 if __name__ == '__main__':
     try:
-        with open('./src/persontitles/academic_us.txt') as fin:
+        with open('./src/persontitles/data/academic_us.txt') as fin:
             ACADEMIC = fin.read().split('\n')
             for i, degree in enumerate(ACADEMIC):
                 print(i, degree)

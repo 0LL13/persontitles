@@ -11,18 +11,18 @@ from bs4 import BeautifulSoup
 
 urls = [
     # this url was locked away from public:
-    # 'http://www.besoldungstabelle.de/besoldungsgruppen_amtsbezeichnungen_besoldungstabelle' 
+    # 'http://www.besoldungstabelle.de/besoldungsgruppen_amtsbezeichnungen_besoldungstabelle'
     'https://www.future-beamtenkredit.de/beamtenberufe/',
 ]
 
 
 def gov_jobs() -> list:
     try:
-        with open('./persontitles/data/gov_jobs.txt', mode='r', encoding='utf-8') as fin:  # noqa
+        with open('./src/persontitles/data/gov_jobs.txt', mode='r', encoding='utf-8') as fin:  # noqa
             GOV_JOBS = fin.read().split('\n')
     except FileNotFoundError:
         GOV_JOBS = gov_job_titles()
-        with open('./persontitles/data/gov_jobs.txt', mode='a', encoding='utf-8') as fout:  # noqa
+        with open('./src/persontitles/data/gov_jobs.txt', mode='a', encoding='utf-8') as fout:  # noqa
             fout.write('\n'.join(item for item in GOV_JOBS))
 
     return GOV_JOBS

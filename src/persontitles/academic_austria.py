@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # academic_austria.py
-"""Collection of German academic degrees."""
+"""Collection of Austrian academic degrees."""
 import unicodedata
 
 import requests
@@ -10,14 +10,14 @@ from bs4 import BeautifulSoup
 
 def degrees_austria() -> set:
     try:
-        with open('./src/persontitles/academic_austrian.txt', mode='r', encoding='utf-8') as fin:  # noqa
+        with open('./src/persontitles/data/academic_austrian.txt', mode='r', encoding='utf-8') as fin:  # noqa
             ACADEMIC = fin.read().split('\n')
     except FileNotFoundError:
         degrees = _degrees()
         ACADEMIC = []
         for abbr in degrees:
             ACADEMIC.append(abbr)
-        with open('./src/persontitles/academic_austrian.txt', mode='a', encoding='utf-8') as fout:  # noqa
+        with open('./src/persontitles/data/academic_austrian.txt', mode='a', encoding='utf-8') as fout:  # noqa
             fout.write('\n'.join(item for item in set(ACADEMIC)))
 
     return set(ACADEMIC)

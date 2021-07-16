@@ -18,7 +18,7 @@ from context import job_titles  # noqa
 
 def test_no_file():
     try:
-        os.remove('./src/persontitles/job_titles.txt')
+        os.remove('./src/persontitles/data/job_titles.txt')
     except FileNotFoundError:
         pass
     JOB_TITLES = job_titles.job_titles()

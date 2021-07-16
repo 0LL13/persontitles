@@ -10,11 +10,11 @@ from bs4 import BeautifulSoup
 
 def degrees_uk() -> list:
     try:
-        with open('./src/persontitles/academic_uk.txt', mode='r', encoding='utf-8') as fin:  # noqa
+        with open('./src/persontitles/data/academic_uk.txt', mode='r', encoding='utf-8') as fin:  # noqa
             DEGREES = fin.read().split('\n')
     except FileNotFoundError:
         DEGREES = uk_degrees()
-        with open('./src/persontitles/academic_uk.txt', mode='a', encoding='utf-8') as fout:  # noqa
+        with open('./src/persontitles/data/academic_uk.txt', mode='a', encoding='utf-8') as fout:  # noqa
             fout.write('\n'.join(item for item in DEGREES))
     return DEGREES
 

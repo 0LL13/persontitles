@@ -5,7 +5,7 @@
 
 
 def salutations() -> list:
-    with open('./persontitles/resources/salutations.txt', mode='r', encoding='utf-8') as fin:  # noqa
+    with open('./src/persontitles/data/salutations.txt', mode='r', encoding='utf-8') as fin:  # noqa
         SALUTATIONS = [salut.strip() for salut in fin.read().split('\n') if salut.strip()]  # noqa
 
     return SALUTATIONS
