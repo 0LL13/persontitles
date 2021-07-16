@@ -4,7 +4,7 @@
 """Collection of academic degrees."""
 import json
 import os
-# import pkgutil
+import importlib.resources as pkg_resources
 import sys
 
 PACKAGE_PARENT = '..'
@@ -29,10 +29,21 @@ def degrees() -> dict:
             DEGREES = json.load(fin)
     except FileNotFoundError:
         DEGREES = collect_degrees()
-        with open('./src/persontitles/data/degrees.json', mode='w', encoding='utf-8') as fout:  # noqa
-            json.dump(DEGREES, fout)
+        try:
+            with open('./src/persontitles/data/degrees.json', mode='w', encoding='utf-8') as fout:  # noqa
+                json.dump(DEGREES, fout)
+        except FileNotFoundError:
+            DEGREES = load_file_within_package()
 
     return DEGREES
+
+
+def load_file_within_package():
+    from . import data
+    FILE = pkg_resources.read_text(data, 'degrees.json')
+    with open(FILE) as fin:
+        DATA_FILE = json.load(fin)
+    return DATA_FILE
 
 
 def collect_degrees():
