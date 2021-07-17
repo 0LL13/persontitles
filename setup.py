@@ -40,7 +40,7 @@ setup(
     long_description_content_type='text/x-rst',
     include_package_data=True,
     packages=['persontitles'],
-    package_dir={"": "src/"},
+    package_dir={"": "src"},
     package_data={"persontitles": ["data/*.txt", "data/*.json"]},
     keywords='person, titles, degrees',
     name='persontitles',
