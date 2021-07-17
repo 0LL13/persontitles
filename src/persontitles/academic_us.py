@@ -3,7 +3,7 @@
 # academic_us.py
 """Collection of US academic degrees."""
 import unicodedata
-
+import importlib.resources as pkg_resources
 import requests
 from bs4 import BeautifulSoup
 
@@ -14,23 +14,38 @@ def degrees_us():
         with open('./src/persontitles/data/academic_us.txt', mode='r', encoding='utf-8') as fin:  # noqa
             ACADEMIC = fin.read().split('\n')
     except FileNotFoundError:
-        ACADEMIC = []
-        ACADEMIC_1 = academic_degrees_1()
-        degrees_1 = get_degrees_1(ACADEMIC_1)
-        ACADEMIC_2 = academic_degrees_2()
-        degrees_2 = get_degrees_2(ACADEMIC_2)
-        degrees_2 = revise_degrees_2(degrees_2)
-        abbrevs = _degrees()
+        try:
+            ACADEMIC = []
+            ACADEMIC_1 = academic_degrees_1()
+            degrees_1 = get_degrees_1(ACADEMIC_1)
+            ACADEMIC_2 = academic_degrees_2()
+            degrees_2 = get_degrees_2(ACADEMIC_2)
+            degrees_2 = revise_degrees_2(degrees_2)
+            abbrevs = _degrees()
 
-        DEGREES = abbrevs + degrees_1 + degrees_2
-        for abbr in DEGREES:
-            abbr = unicodedata.normalize('NFKD', abbr)
-            ACADEMIC.append(abbr)
+            DEGREES = abbrevs + degrees_1 + degrees_2
+            for abbr in DEGREES:
+                abbr = unicodedata.normalize('NFKD', abbr)
+                ACADEMIC.append(abbr)
 
-        with open('./src/persontitles/data/academic_us.txt', mode='a', encoding='utf-8') as fout:  # noqa
-            fout.write('\n'.join(item for item in set(ACADEMIC)))
+            with open('./src/persontitles/data/academic_us.txt', mode='a', encoding='utf-8') as fout:  # noqa
+                fout.write('\n'.join(item for item in set(ACADEMIC)))
+        except FileNotFoundError:
+            ACADEMIC = load_file_within_package()
 
     return set(ACADEMIC)
+
+
+def load_file_within_package():
+    from . import data
+
+    print("Now in load_file_within_package() - uk")
+
+    FILE = pkg_resources.read_text(data, 'degrees.json')
+    with open(FILE) as fin:
+        DATA_FILE = fin.read().split('\n')
+
+    return DATA_FILE
 
 
 def academic_degrees_1() -> list:

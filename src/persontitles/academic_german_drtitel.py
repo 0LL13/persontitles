@@ -3,6 +3,7 @@
 # academic_german.py
 """Collection of German academic degrees as found on www.drtitel.de."""
 import bs4
+import importlib.resources as pkg_resources
 import re
 import requests
 import unicodedata
@@ -14,11 +15,26 @@ def degrees_ger_drtitel() -> list:
         with open('./src/persontitles/data/academic_german_drtitel.txt', mode='r', encoding='utf-8') as fin:  # noqa
             DEGREES_DRTITEL = fin.read().split('\n')
     except FileNotFoundError:
-        DEGREES_DRTITEL = dr_degrees()
-        with open('./src/persontitles/data/academic_german_drtitel.txt', mode='a', encoding='utf-8') as fout:  # noqa
-            fout.write('\n'.join(item for item in DEGREES_DRTITEL))
+        try:
+            DEGREES_DRTITEL = dr_degrees()
+            with open('./src/persontitles/data/academic_german_drtitel.txt', mode='a', encoding='utf-8') as fout:  # noqa
+                fout.write('\n'.join(item for item in DEGREES_DRTITEL))
+        except FileNotFoundError:
+            DEGREES_DRTITEL = load_file_within_package()
 
     return DEGREES_DRTITEL
+
+
+def load_file_within_package():
+    from . import data
+
+    print("Now in load_file_within_package() - drtitel")
+
+    FILE = pkg_resources.read_text(data, 'academic_german_drtitel.txt')
+    with open(FILE) as fin:
+        DATA_FILE = fin.read().split('\n')
+
+    return DATA_FILE
 
 
 def dr_degrees() -> list:

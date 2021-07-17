@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 # academic_uk.py
 """Collection of UK academic degrees."""
+import importlib.resources as pkg_resources
 import unicodedata
 
 import requests
@@ -13,10 +14,26 @@ def degrees_uk() -> list:
         with open('./src/persontitles/data/academic_uk.txt', mode='r', encoding='utf-8') as fin:  # noqa
             DEGREES = fin.read().split('\n')
     except FileNotFoundError:
-        DEGREES = uk_degrees()
-        with open('./src/persontitles/data/academic_uk.txt', mode='a', encoding='utf-8') as fout:  # noqa
-            fout.write('\n'.join(item for item in DEGREES))
+        try:
+            DEGREES = uk_degrees()
+            with open('./src/persontitles/data/academic_uk.txt', mode='a', encoding='utf-8') as fout:  # noqa
+                fout.write('\n'.join(item for item in DEGREES))
+        except FileNotFoundError:
+            DEGREES = load_file_within_package()
+
     return DEGREES
+
+
+def load_file_within_package():
+    from . import data
+
+    print("Now in load_file_within_package() - uk")
+
+    FILE = pkg_resources.read_text(data, 'degrees.json')
+    with open(FILE) as fin:
+        DATA_FILE = fin.read().split('\n')
+
+    return DATA_FILE
 
 
 def uk_degrees():

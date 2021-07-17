@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # academic_german_wiki.py
 """Collection of German academic degrees listed in Wikipedia."""
-# import itertools
+import importlib.resources as pkg_resources
 import requests
 import unicodedata
 
@@ -14,11 +14,26 @@ def degrees_ger_wiki() -> list:
         with open('./src/persontitles/data/academic_german_wiki.txt', mode='r', encoding='utf-8') as fin:  # noqa
             DEGREES = fin.read().split('\n')
     except FileNotFoundError:
-        DEGREES = _degrees()
-        with open('./src/persontitles/data/academic_german_wiki.txt', mode='a', encoding='utf-8') as fout:  # noqa
-            fout.write('\n'.join(item for item in DEGREES))
+        try:
+            DEGREES = _degrees()
+            with open('./src/persontitles/data/academic_german_wiki.txt', mode='a', encoding='utf-8') as fout:  # noqa
+                fout.write('\n'.join(item for item in DEGREES))
+        except FileNotFoundError:
+            DEGREES = load_file_within_package()
 
     return DEGREES
+
+
+def load_file_within_package():
+    from . import data
+
+    print("Now in load_file_within_package() - german_wiki")
+
+    FILE = pkg_resources.read_text(data, 'academic_german_drtitel.txt')
+    with open(FILE) as fin:
+        DATA_FILE = fin.read().split('\n')
+
+    return DATA_FILE
 
 
 def get_lines(soup) -> list:

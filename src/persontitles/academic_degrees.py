@@ -28,8 +28,8 @@ def degrees() -> dict:
         with open('./src/persontitles/data/degrees.json', mode='r', encoding='utf-8') as fin:  # noqa
             DEGREES = json.load(fin)
     except FileNotFoundError:
-        DEGREES = collect_degrees()
         try:
+            DEGREES = collect_degrees()
             with open('./src/persontitles/data/degrees.json', mode='w', encoding='utf-8') as fout:  # noqa
                 json.dump(DEGREES, fout)
         except FileNotFoundError:
@@ -40,9 +40,13 @@ def degrees() -> dict:
 
 def load_file_within_package():
     from . import data
+
+    print("Now in load_file_within_package() - degrees")
+
     FILE = pkg_resources.read_text(data, 'degrees.json')
     with open(FILE) as fin:
         DATA_FILE = json.load(fin)
+
     return DATA_FILE
 
 
