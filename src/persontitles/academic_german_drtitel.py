@@ -30,8 +30,7 @@ def load_file_within_package():
 
     print("Now in load_file_within_package() - drtitel")
 
-    FILE = pkg_resources.read_text(data, 'academic_german_drtitel.txt')
-    with open(FILE) as fin:
+    with pkg_resources.open_text(data, 'academic_german_drtitel.txt') as fin:
         DATA_FILE = fin.read().split('\n')
 
     return DATA_FILE

@@ -41,8 +41,7 @@ def load_file_within_package():
 
     print("Now in load_file_within_package() - uk")
 
-    FILE = pkg_resources.read_text(data, 'degrees.json')
-    with open(FILE) as fin:
+    with pkg_resources.open_text(data, 'degrees.json') as fin:
         DATA_FILE = fin.read().split('\n')
 
     return DATA_FILE
