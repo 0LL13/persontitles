@@ -40,10 +40,11 @@ setup(
     long_description_content_type='text/x-rst',
     # include_package_data will nullify package_data information
     # see: https://stackoverflow.com/a/11848281/6597765
-    # --> NO: include_package_data=True,
+    # EITHER include_package_data=True, OR package_dir and package_data
     packages=['persontitles'],
+    include_package_data=True,
     package_dir={"": "src"},
-    package_data={"persontitles": ["data/*.txt", "data/*.json"]},
+    # package_data={"persontitles": ["data/*.txt", "data/*.json"]},
     keywords='person, titles, degrees',
     name='persontitles',
     test_suite='tests',
