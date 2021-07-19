@@ -44,13 +44,14 @@ setup(
     packages=['persontitles'],
     include_package_data=True,
     package_dir={"": "src"},
+    # this will NOT work:
     # package_data={"persontitles": ["data/*.txt", "data/*.json"]},
     keywords='person, titles, degrees',
     name='persontitles',
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/0LL13/persontitles',
-    version='0.3.8',
+    version='0.3.9',
     zip_safe=False,
     extras_require={
         'dev': ['check-manifest'],

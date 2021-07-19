@@ -39,9 +39,7 @@ def degrees_us():
 def load_file_within_package():
     from . import data
 
-    print("Now in load_file_within_package() - uk")
-
-    with pkg_resources.open_text(data, 'degrees.json') as fin:
+    with pkg_resources.open_text(data, 'academic_us.txt') as fin:
         DATA_FILE = fin.read().split('\n')
 
     return DATA_FILE

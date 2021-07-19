@@ -21,11 +21,23 @@ def gov_jobs() -> list:
         with open('./src/persontitles/data/gov_jobs.txt', mode='r', encoding='utf-8') as fin:  # noqa
             GOV_JOBS = fin.read().split('\n')
     except FileNotFoundError:
-        GOV_JOBS = gov_job_titles()
-        with open('./src/persontitles/data/gov_jobs.txt', mode='a', encoding='utf-8') as fout:  # noqa
-            fout.write('\n'.join(item for item in GOV_JOBS))
+        try:
+            GOV_JOBS = gov_job_titles()
+            with open('./src/persontitles/data/gov_jobs.txt', mode='a', encoding='utf-8') as fout:  # noqa
+                fout.write('\n'.join(item for item in GOV_JOBS))
+        except FileNotFoundError:
+            GOV_JOBS = load_file_within_package()
 
     return GOV_JOBS
+
+
+def load_file_within_package():
+    from . import data
+
+    with pkg_resources.open_text(data, 'gov_jobs.txt') as fin:
+        DATA_FILE = fin.read().split('\n')
+
+    return DATA_FILE
 
 
 def gov_job_titles() -> list:

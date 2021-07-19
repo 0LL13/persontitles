@@ -4,6 +4,7 @@
 """Collection of peer titles."""
 import json
 import os
+import importlib.resources as pkg_resources
 import requests
 import sys
 import unicodedata
@@ -25,11 +26,23 @@ def peertitles() -> dict:
         with open('./src/persontitles/data/peertitles.json', mode='r', encoding='utf-8') as fin:  # noqa
             PEERTITLES = json.load(fin)
     except FileNotFoundError:
-        PEERTITLES = _titles()
-        with open('./src/persontitles/data/peertitles.json', mode='w', encoding='utf-8') as fout:  # noqa
-            json.dump(PEERTITLES, fout)
+        try:
+            PEERTITLES = _titles()
+            with open('./src/persontitles/data/peertitles.json', mode='w', encoding='utf-8') as fout:  # noqa
+                json.dump(PEERTITLES, fout)
+        except FileNotFoundError:
+            PEERTITLES = load_file_within_package()
 
     return PEERTITLES
+
+
+def load_file_within_package():
+    from . import data
+
+    with pkg_resources.open_text(data, 'peertitles.json') as fin:
+        DATA_FILE = json.load(fin)
+
+    return DATA_FILE
 
 
 def _titles() -> dict:

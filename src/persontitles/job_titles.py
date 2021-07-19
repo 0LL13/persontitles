@@ -4,6 +4,7 @@
 """Collection of English and German job titles."""
 import bs4
 import json
+import importlib.resources as pkg_resources
 import requests
 import unicodedata
 
@@ -27,13 +28,29 @@ def job_titles() -> dict:
             english_jobtitles = fin.read().split('\n')
             JOB_TITLES["English"] = english_jobtitles
     except FileNotFoundError:
-        german_jobtitles, english_jobtitles = job_titles_mix()
-        with open('./src/persontitles/data/german_jobtitles.txt', mode='a', encoding='utf-8') as fout:  # noqa
-            fout.write('\n'.join(item for item in german_jobtitles))
-        with open('./src/persontitles/data/english_jobtitles.txt', mode='a', encoding='utf-8') as fout:  # noqa
-            fout.write('\n'.join(item for item in english_jobtitles))
-
+        try:
+            german_jobtitles, english_jobtitles = job_titles_mix()
+            with open('./src/persontitles/data/german_jobtitles.txt', mode='a', encoding='utf-8') as fout:  # noqa
+                fout.write('\n'.join(item for item in german_jobtitles))
+            with open('./src/persontitles/data/english_jobtitles.txt', mode='a', encoding='utf-8') as fout:  # noqa
+                fout.write('\n'.join(item for item in english_jobtitles))
+        except FileNotFoundError:
+            JOB_TITLES = load_file_within_package()
     return JOB_TITLES
+
+
+def load_file_within_package():
+    from . import data
+
+    DATA_FILE = {}
+    with pkg_resources.open_text(data, 'german_jobtitles.txt') as fin:
+        jobtitles = fin.read().split('\n')
+        DATA_FILE["German"] = jobtitles
+    with pkg_resources.open_text(data, 'english_jobtitles.txt') as fin:
+        jobtitles = fin.read().split('\n')
+        DATA_FILE["English"] = jobtitles
+
+    return DATA_FILE
 
 
 def job_titles_mix() -> list:

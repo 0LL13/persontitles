@@ -27,9 +27,7 @@ def degrees_ger_wiki() -> list:
 def load_file_within_package():
     from . import data
 
-    print("Now in load_file_within_package() - german_wiki")
-
-    with pkg_resources.open_text(data, 'academic_german_drtitel.txt') as fin:
+    with pkg_resources.open_text(data, 'academic_german_wiki.txt') as fin:
         DATA_FILE = fin.read().split('\n')
 
     return DATA_FILE

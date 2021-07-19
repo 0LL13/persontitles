@@ -3,7 +3,7 @@
 # academic_austria.py
 """Collection of Austrian academic degrees."""
 import unicodedata
-
+import importlib.resources as pkg_resources
 import requests
 from bs4 import BeautifulSoup
 
@@ -13,14 +13,28 @@ def degrees_austria() -> set:
         with open('./src/persontitles/data/academic_austrian.txt', mode='r', encoding='utf-8') as fin:  # noqa
             ACADEMIC = fin.read().split('\n')
     except FileNotFoundError:
-        degrees = _degrees()
-        ACADEMIC = []
-        for abbr in degrees:
-            ACADEMIC.append(abbr)
-        with open('./src/persontitles/data/academic_austrian.txt', mode='a', encoding='utf-8') as fout:  # noqa
-            fout.write('\n'.join(item for item in set(ACADEMIC)))
+        try:
+            degrees = _degrees()
+            ACADEMIC = []
+            for abbr in degrees:
+                ACADEMIC.append(abbr)
+            with open('./src/persontitles/data/academic_austrian.txt', mode='a', encoding='utf-8') as fout:  # noqa
+                fout.write('\n'.join(item for item in set(ACADEMIC)))
+        except FileNotFoundError:
+            ACADEMIC = load_file_within_package()
 
     return set(ACADEMIC)
+
+
+def load_file_within_package():
+    from . import data
+
+    print("Now in load_file_within_package() - austria")
+
+    with pkg_resources.open_text(data, 'academic_austria.txt') as fin:
+        DATA_FILE = fin.read().split('\n')
+
+    return DATA_FILE
 
 
 def get_degrees(soup):

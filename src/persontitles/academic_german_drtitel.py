@@ -28,8 +28,6 @@ def degrees_ger_drtitel() -> list:
 def load_file_within_package():
     from . import data
 
-    print("Now in load_file_within_package() - drtitel")
-
     with pkg_resources.open_text(data, 'academic_german_drtitel.txt') as fin:
         DATA_FILE = fin.read().split('\n')
 
